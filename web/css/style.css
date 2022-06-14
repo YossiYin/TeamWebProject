@@ -1,0 +1,571 @@
+* {
+    box-sizing: border-box;
+}
+
+/* body 样式 */
+body {
+    font-family: Arial;
+    margin: 0;
+    /* 设置最大宽度 */
+    /*max-width: 1080px;*/
+    /* 页面居中 */
+    margin: auto;
+    /* 默认背景颜色 */
+    background-color:#f6f5f3 ;
+}
+
+/* 标题 */
+/* 头部 */
+.header {
+    padding: 30px;
+    text-align: left;
+    color: rgb(247, 162, 162);
+    min-height: 100px;
+/* 设置背景图片 */
+/*    background-color: #b3080a;*/
+    background-image: url("../img/headBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+
+}
+
+.header-logo{
+    width: 1100px;
+    margin: auto;
+}
+.header-info{
+    margin: auto;
+    float: left;
+}
+/* 标题 */
+.header h1 {
+    padding-left: 120px;
+    margin:auto;
+    font-size: 40px;
+    font-style: italic;
+
+}
+.header p{
+    font-style: italic;
+    font-size: 25px;
+}
+
+/* 导航 */
+.navbar {
+    overflow: hidden;
+    background-color: rgb(239, 239, 240);
+    max-width: 1100px;
+    margin: auto;
+
+}
+
+/* 设置导航栏文本 */
+
+
+
+/* 导航栏样式 */
+.navbar a {
+    float: left;
+    display: block;
+    color: #000000;
+
+    transition-duration: 0.4s;
+
+    text-align:right;
+    padding: 14px 20px;
+    text-decoration: none;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+/* 右侧链接*/
+/*.navbar a.right {*/
+/*    float: right;*/
+/*}*/
+
+/* 鼠标移动到链接的颜色 */
+.navbar a:hover {
+    background-color: #50c9ff;
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+
+}
+
+
+/* 列容器 */
+/*装main和side的*/
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+    min-height: 800px;
+}
+
+/* 创建两个列 */
+/* 边栏 */
+.side {
+    -ms-flex: 30%; /* IE10 */
+    flex: 30%;
+    background-color: #f8f8f8;
+    padding: 20px;
+    /* 背景图片 */
+
+}
+/* 链接无下划线 */
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:underline;}
+/* 主要的内容区域 */
+.main {
+    /*-ms-flex: 70%; !* IE10 *!*/
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+    min-height: 800px;
+}
+
+/* 测试图片 */
+.fakeimg {
+    background-color: rgba(115, 110, 110, 0.539);
+    width: 100%;
+    padding: 20px;
+}
+
+
+
+/* 底部 */
+.footer {
+    padding: 15px;
+    text-align: center;
+    background: #a60e12;
+    font-size: 5px;
+    color: white;
+}
+.copyright a:link {
+    text-decoration:none;
+color: #a4a4a4}    /* unvisited link */
+.copyright a:visited {text-decoration:none;
+    color: #a4a4a4
+} /* visited link */
+.copyright a:hover {text-decoration:underline;}   /* mouse over link */
+.copyright a:active {text-decoration:underline;}  /* selected link */
+/*首页================================*/
+.map{
+
+    width: 200px;
+    height: auto;
+}
+.showSchoolItemContainer{
+    display: flex;
+    flex-direction: column;
+    
+}
+.showSchoolItem{
+    margin-bottom: 50px;
+    height:auto;
+    width: 100%;
+    background-color: #ffffff;
+}
+.showSchoolItem img{
+    width: 100%;
+
+}
+/*首页================================*/
+/* 底部-消除链接颜色 */
+/*                      =================惠院风光css=============                                 */
+.fixTips{
+    top: 500px;
+    position: fixed;
+}
+/*                                       百叶窗    */
+
+.windowShades{
+    /* 引入字体 */
+    font-family: 'Muli',sans-serif;
+    /* 弹性布局 水平 + 垂直居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /**/
+
+    /* 100%的窗口高度 */
+    /*height: 100vh;*/
+    height: 100%;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    margin: 0;
+    background-color: #f2f2f4;
+}
+
+.windowShadesContainer{
+    display: flex;
+    width: 90vw;
+    /*height: 50%;*/
+}
+
+.panel{
+    /* 跟封面一样大小 */
+    background-size: cover;
+    /* 把封面图片居中 */
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    /* 边框圆角 */
+    border-radius: 50px;
+    color: #fff;
+    /* 鼠标放上变小手 */
+    cursor: pointer;
+    flex: 0.5;
+    margin: 10px;
+    /* 相对定位 */
+    position: relative;
+    -webkit-transition: all 700ms ease-in;
+}
+
+.panel h3{
+    font-size: 24px;
+    /* 绝对定位 */
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+}
+
+.panel.active{
+    flex: 5;
+}
+
+.panel.active h3 {
+    opacity: 1;
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width:480px){
+    .windowShadesContainer{
+        width: 100vw;
+    }
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5){
+        display: none;
+    }
+}
+/*                                       百叶窗    end*/
+/*                           具体细节           */
+
+.imgDetailOuter{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    background-color: #f9f9fa;
+    /*margin: auto;*/
+    border-top-style: inset;
+    border-width: 10px;
+    margin-bottom: 100px;
+
+
+}
+.detailImg{
+
+    /*height: 400px;*/
+    /*width: 600px;*/
+    flex: 45%;/*设置弹性盒子占比*/
+    background-color: #f9f9fa;
+
+    /*border-style: dotted;*/
+    /*border-width: 5px;*/
+    overflow: hidden;
+
+}
+.detailImg img{
+    height: 400px;
+    width: 450px;
+    object-fit: cover;
+    /*overflow: hidden;*/
+    transform: scale(1.2);
+}
+/*切换图片按钮*/
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f6f6f8;
+    border: none;
+    color: #2b2b2c;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 50px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 0px;
+
+
+/*    */
+/*    object-fit: none;*/
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    /*content: '»';*/
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    /*padding-right: 20px;*/
+    padding-top: 20px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+/*切换图片按钮*/
+
+.refreshButton{
+    object-fit: none;
+    margin-right: 20px;
+}
+
+.detailText{
+    flex: 55%;
+    /*设置文本格式*/
+    letter-spacing:1px;
+    /*line-height:140%;!*行高*!*/
+    padding-left: 10px;
+    background-color: rgb(248, 248, 249);
+}
+
+/*设置浮现动画效果*/
+/*.detailText{*/
+/*    opacity: 0.5;*/
+/*}*/
+/*.detailText.active{*/
+/*    opacity: 1;*/
+/*    transition: opacity 0.5s;*/
+/*}*/
+/*设置浮现动画效果*/
+.detailText p{
+    /*设置文本缩进*/
+    text-indent:50px;
+
+}
+
+/*                           具体细节          end */
+
+
+.sceneryRow {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: auto;
+    background-color: #ffffff;
+}
+.sceneryMain {
+    /*-ms-flex: 70%; !* IE10 *!*/
+    flex: 100%;
+    background-color: white;
+    padding: 20px;
+}
+
+
+
+/*                      =================惠院风光css===========                                 */
+
+/*                      =================留言板css===========                                 */
+.messageShow{
+    width: 100%;
+    height: 800px;
+    /* 相对定位 */
+    position: relative;
+    /*top: 50px;*/
+    /*设置滚动条*/
+    overflow-y: scroll;
+}
+
+/*滚动条*/
+.messageShow::-webkit-scrollbar{/*滚动条整体部分，其中的属性有width,height,background,border等（就和一个块级元素一样）（位置1）*/
+    width:10px;
+    height:10px;
+}
+/*.messageShow::-webkit-scrollbar-button{!*滚动条两端的按钮，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置2）*!*/
+/*background:#fff;*/
+/*}*/
+.messageShow::-webkit-scrollbar-track{/*外层轨道，可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果（位置3）*/
+    background:#f8f9fa;
+}
+.messageShow::-webkit-scrollbar-track-piece{/*内层轨道，滚动条中间部分（位置4）*/
+    background:#f8f9fa;
+}
+.messageShow::-webkit-scrollbar-thumb{/*滚动条里面可以拖动的那部分（位置5）*/
+    background:#00000033;
+    border-radius:4px;
+}
+.messageShow::-webkit-scrollbar-corner {/*边角（位置6）*/
+    background:#c0c0c0;
+}
+/*.messageShow::-webkit-scrollbar-resizer  {!*定义右下角拖动块的样式（位置7）*!*/
+/*background:#FF0BEE;*/
+/*}*/
+.messageShow{
+    scrollbar-arrow-color: #f4ae21; /**//*三角箭头的颜色*/
+    scrollbar-face-color: #333; /**//*立体滚动条的颜色*/
+    scrollbar-3dlight-color: #666; /**//*立体滚动条亮边的颜色*/
+    scrollbar-highlight-color: #666; /**//*滚动条空白部分的颜色*/
+    scrollbar-shadow-color: #999; /**//*立体滚动条阴影的颜色*/
+    scrollbar-darkshadow-color: #666; /**//*立体滚动条强阴影的颜色*/
+    scrollbar-track-color: #666; /**//*立体滚动条背景颜色*/
+    scrollbar-base-color:#f8f8f8; /**//*滚动条的基本颜色*/
+}
+
+/*滚动条*/
+
+.messageShow::after{
+    content: "";
+    /* 绝对定位 */
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 5px;
+    z-index: 1;
+    height: 110%;
+    background-color: rgb(248, 169, 171);
+}
+
+.box{
+    /* 相对定位 */
+    position: relative;
+    width: 100%;
+    /*height: 120px;*/
+    height: auto;
+    margin-bottom: 50px;
+    display: flex;
+    /* 均匀排列每个元素
+    首个元素放置于起点，末尾元素放置于终点 */
+    justify-content: space-between;
+}
+
+.left,.right{
+    position: relative;
+    width: 40%;
+    height: auto;
+    /* background-color: rgba(255,255,255,.5); */
+    border-radius: 15px;
+    color: rgb(167, 255, 243);
+    text-align: center;
+    padding: 10px;
+}
+
+/*时间位置*/
+.sendTime{
+    position: relative;
+    float: right;
+    right: 0;
+    bottom: 0;
+    color: #1ec8e9;
+    margin-top: 10px;
+}
+
+/* 页面范围内偶数的匹配元素 */
+.box:nth-child(even) .left{
+    background-color: rgb(120, 120, 244);
+    box-shadow: rgba(0, 0, 0,.3);
+}
+
+
+/* 页面范围内奇数的匹配元素 */
+.box:nth-child(odd) .right{
+    background-color: rgb(120, 120, 244);
+    box-shadow: rgba(0, 0, 0,.3);
+}
+
+.center{
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+/* >是子元素选择器 */
+.center > span{
+    width: 120px;
+    border-radius: 10px;
+    text-align: center;
+    font: 600 18px '';
+    line-height: 50px;
+    background-color: rgba(255, 196, 196, 0.5);
+}
+/*.messageShow{*/
+/*    height: 300px;*/
+/*    width: 600px;*/
+/*    background-color: #eccff1;*/
+/*    !*overflow-y:scroll;!*溢出设置滚条*!*!*/
+/*}*/
+
+
+/*                      =================留言板css===========                                 */
+
+
+
+/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+@media screen and (max-width: 680px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .navbar {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+
+    }
+    .navbar a{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+
+    /* 响应式使字体变大 */
+    .navbar{
+        font-size: 21px;
+        font-weight: bold;
+    }
+    h2{
+        font-size: 50px;
+    }
+    h3{
+        font-size: 25px;
+    }
+
+    .main p{
+        font-size: 25px;
+    }
+    .main h5{
+        font-size: 30px;
+    }
+    .main h6{
+        font-size: 25px;
+    }
+}

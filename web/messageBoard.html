@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惠大美景</title>
+    <link rel="shortcut icon" href="img/github-red.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/messageBoardCSS.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <a href="index.html"><img src="img/HZUlogo.png"></a>
+        </div>
+      </div>
+    <div class="navbar">
+        <a href="index.html"><img class="button_home" src="img/home.png"> <span>首页</span></a>
+        <a href="HZUScenery.html"><img class="button_page" src="img/camera.png"> <span>惠院风光</span></a>
+<!--        <a href="#"><img class="button_friends" src="img/github.png"> <span>小组介绍</span></a>-->
+        <a href="messageBoard.html" ><img class="button_ico" src="img/message-square.png"><span>留言板</span></a>
+    </div>
+
+      <div class="row">
+          <div class="main">
+              <div class="messageShow">
+
+                  <div class="box">
+                      <div class="left">
+                          <span class="sendTime"></span>
+                      </div>
+                      <div class="center">
+                <span class="guestName">
+                    殷宏禧
+                </span>
+                      </div>
+                      <div class="right">
+                          生活就像海洋，只有意志坚定的人才能到达彼岸。
+                          <span class="sendTime">---2022年06月10日 22:32:14</span>
+                      </div>
+                  </div>
+
+                  <div class="box">
+                      <div class="left">
+                          天行健，君子以自强不息。
+                          <span class="sendTime">---2022年06月10日 22:41:34</span>
+                      </div>
+                      <div class="center">
+                <span class="guestName">
+                    叶仕鹏
+                </span>
+                      </div>
+                      <div class="right">
+                          <span class="sendTime"></span>
+
+                      </div>
+                  </div>
+
+                  <div class="box">
+                      <div class="left">
+                          <span class="sendTime"></span>
+                      </div>
+                      <div class="center">
+                <span class="guestName">
+                    叶炜城
+                </span>
+                      </div>
+                      <div class="right">
+                          逐梦世界舞台，问鼎人生精彩。
+                          <span class="sendTime">---2022年06月11日 18:34:14</span>
+                      </div>
+                  </div>
+
+
+
+
+              </div>
+<!--              <div class="messageShow">-->
+<!--                <div class="guestMessage">-->
+<!--                    <h1 class="guestName">访问者1</h1>-->
+<!--                        <div class="messageText">-->
+<!--                            <p>说了什么。。。说了什么。。。说了什么。。。说了什么。。。说了什么。。。说了什么。。。说了什么。。。说了什么。。。</p>-->
+<!--                        </div>-->
+<!--                    <span class="sendTime">2022：06：08</span>-->
+<!--                </div>-->
+<!--              </div>-->
+          </div>
+        <div class="side">
+            <div class="messageBoardOuter">
+                <form id="form" action="/TeamWebProject/GuestMessageServlet" method="post" class="agile_form">
+                    <div class="icon1">
+                        <i>*邮箱</i>
+                        <input placeholder="xxxxxxxx@xxx.com" name="email" type="email" required="" value="">
+                    </div>
+                    <div class="icon1 w3ls-name1">
+                        <i>*昵称</i>
+                        <input  placeholder="你的名字" name="nickname" type="text" required="" value="">
+                    </div>
+                    <div class="icon2">
+                        <i>联系方式</i>
+                        <input  placeholder=" " name="contact" type="text" required="" value="">
+                    </div>
+                    <div class="clear"></div>
+                    <h6>*说点什么吧</h6>
+                    <textarea  name="messageText" class="w3l_summary"  required=""></textarea>
+                    <input id="submitBtn"  type="button" value="提交留言">
+                    <script>
+                        /*对用户表单的填写进行检查*/
+                        $(function () {
+                            /*检查邮箱*/
+                            $("input[name=email]").blur(function () {
+                                var email = $("input[name=email]").val();
+                                var flag = false;
+                                var message = "";
+                                var myreg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+                                if(email ==''){
+                                    message = "邮箱不能为空！";
+                                }else if(!myreg.test(email)){
+                                    message = "请输入有效的邮箱地址！";
+                                }else{
+                                    flag = true;
+                                }
+                                if(!flag){
+                                    //错误提示
+                                    $(".errorMessage").html(message);
+                                    $("#submitBtn").attr("disabled","disabled");
+                                }else{
+                                    //正确提示
+                                    $(".errorMessage").html("");
+                                    $("#submitBtn").removeAttr("disabled");
+                                }
+                            });
+                            //检查昵称
+                            $("input[name=nickname]").blur(function () {
+                                var email = $("input[name=nickname]").val();
+                                var flag = false;
+                                var message = "";
+                                var myreg = /^[\u4e00-\u9fa5]|[a-zA-Z]$/;
+                                if(email ==''){
+                                    message = "昵称不能为空！";
+                                }else if(!myreg.test(email)){
+                                    message = "请输入有效的昵称！（3到16位，不允许特殊符号）";
+                                }else{
+                                    flag = true;
+                                }
+                                if(!flag){
+                                    //错误提示
+                                    $(".errorMessage").html(message);
+                                    $("#submitBtn").attr("disabled","disabled");
+                                }else{
+                                    //正确提示
+                                    $(".errorMessage").html("");
+                                    $("#submitBtn").removeAttr("disabled");
+                                }
+                            });
+                            //检查文本长度
+                            $("textarea[name=messageText]").blur(function () {
+                                var email = $("textarea[name=messageText]").val();
+                                var flag = false;
+                                var message = "";
+                                var myreg = /.{3,400}/;
+                                if(email ==''){
+                                    message = "文章不能为空！";
+                                }else if(!myreg.test(email)){
+                                    message = "请输入有效的文章！（3-400字符）";
+                                }else{
+                                    flag = true;
+                                }
+                                if(!flag){
+                                    //错误提示
+                                    $(".errorMessage").html(message);
+                                    $("#submitBtn").attr("disabled","disabled");
+                                }else{
+                                    //正确提示
+                                    $(".errorMessage").html("");
+                                    $("#submitBtn").removeAttr("disabled");
+                                }
+                            });
+
+                        })
+                    </script>
+                </form>
+                <br>
+                <span style="font-size: 20px;color: red;font-weight: bold" class="errorMessage"></span>
+
+                <!--                <button id="submit">提交留言</button>-->
+                <!--使用AJAX提交表单并且实时刷新留言板&每次载入页面时进行刷新-->
+                <script>
+                    $(function (){
+                        // alert("页面加载完成，自动调用此方法：检测服务器是否存有留言");
+                        $.ajax({
+                            url: "GuestMessageServlet",
+                            type: "post",
+                            dataType: "text",
+                            data: {"method":"load"},
+                            success: function (result) {
+                                if(result!=null){
+                                    // alert("得到服务器的数据为："+result+"类型为"+typeof result);
+                                    /*将字符串转化为json对象数组*/
+                                    var jsonObjs = JSON.parse(result);
+                                    // alert("jsonObjs="+jsonObjs+"jsonObjs的数据类型为"+typeof jsonObjs);
+                                    for (var i = 0; i < jsonObjs.length; i++) {
+                                        var item = jsonObjs[i];
+                                        // alert("email="+item.email+"  nickname="+item.nickname+"  contact="+item.contact+"  messageText="+item.messageText+"  messageID="+item.messageID+"  sendTime="+item.sendTime);
+                                        $(".messageShow").append("<div class=\"box\">\n" +
+                                            "                      <div class=\"left\">\n" +
+                                            "                          <span class=\"sendTime\"></span>\n" +
+                                            "                      </div>\n" +
+                                            "                      <div class=\"center\">\n" +
+                                            "                <span class=\"guestName\">\n" +
+                                            "                    \n" +
+                                            "                </span>\n" +
+                                            "                      </div>\n" +
+                                            "                      <div class=\"right\">\n" +
+                                            "                          \n" +
+                                            "                          <span class=\"sendTime\"></span>\n" +
+                                            "                      </div>\n" +
+                                            "                  </div>");
+
+                                        $(".box:last .guestName").text(item.nickname);
+                                        if (item.messageID % 2 != 0){
+                                            // alert("ID是奇数");
+                                            $(".box:last .right").html(item.messageText+"<p><span class=\"sendTime\">---"+item.sendTime+"</span>");
+                                            // $(".box:last .right .sendTime").text("item.sendTime");
+                                        }else {
+                                            // alert("ID是偶数");
+                                            $(".box:last .left").html(item.messageText+"<p><span class=\"sendTime\">---"+item.sendTime+"</span>");
+                                            // $(".box:last .left .sendTime").text("item.sendTime");
+
+                                        }
+                                    }
+                                }
+
+                            }
+                        });
+
+                        /*设置提交留言按钮*/
+                        $("#submitBtn").click(function () {
+                            if ($("input[name=email]").val()==""|$("input[name=nickname]").val()==""|$("textarea[name=messageText]").val()==""){
+                                alert("请按要求填写信息");
+                                return;
+                            }
+                            // $("#submitBtn").attr("disabled","true");
+                            $.ajax({
+                                url: "GuestMessageServlet",
+                                type: "post",
+                                dataType: "json",
+                                data: $('#form').serialize(),
+                                success: function (result) {
+                                    /*接收服务器的值*/
+                                    // alert("email="+result.email+"  nickname="+result.nickname+"  contact="+result.contact+"  messageText="+result.messageText+"  messageID="+result.messageID+"  sendTime="+result.sendTime);
+                                    // alert("服务器传来的数据类型为="+typeof result);
+                                    //根据留言数量判断显示的位置
+                                    $(".messageShow").append("<div class=\"box\">\n" +
+                                        "                      <div class=\"left\">\n" +
+                                        "                          <span class=\"sendTime\"></span>\n" +
+                                        "                      </div>\n" +
+                                        "                      <div class=\"center\">\n" +
+                                        "                <span class=\"guestName\">\n" +
+                                        "                    \n" +
+                                        "                </span>\n" +
+                                        "                      </div>\n" +
+                                        "                      <div class=\"right\">\n" +
+                                        "                          \n" +
+                                        "                          <span class=\"sendTime\"></span>\n" +
+                                        "                      </div>\n" +
+                                        "                  </div>");
+
+                                    $(".box:last .guestName").text(result.nickname);
+                                    if (result.messageID % 2 != 0){
+                                        // alert("ID是奇数");
+                                        $(".box:last .right").html(result.messageText+"<p><span class=\"sendTime\">---"+result.sendTime+"</span>");
+                                        // $(".box:last .right .sendTime").text(result.sendTime);
+
+
+                                    }else {
+                                        // alert("ID是偶数");
+                                        $(".box:last .left").html(result.messageText+"<p><span class=\"sendTime\">---"+result.sendTime+"</span>");
+                                        // $(".box:last .left .sendTime").text(result.sendTime);
+
+                                    }
+
+
+                                    /*清空填好的值*/
+                                    $("#form")[0].reset();
+                                }
+                            })
+                            // alert($('#form').serialize());
+
+                            // $.getJSON("http://localhost:8080/TeamWebProject/GuestMessageServlet","action=jQuerySerialize&" +
+                            //     $("#form").serialize(),
+                            //     function (data) {
+                            // });
+                        })
+                    })
+                </script>
+
+
+            </div>
+
+
+        </div>
+      </div>
+
+      <div class="footer">
+          <div class="copyright">
+              Copyright © 2021-2022
+              <strong><a href="//www.zerotwo.red/" target="_blank">zerotwo.red</a></strong> All Rights Reserved. 备案号：<a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn/">粤ICP备2021155110号</a>
+          </div>
+      </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惠大美景</title>
+    <link rel="shortcut icon" href="img/github-red.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=ZFtIhhfEofyIRxfmq5RrckWYWGYWmuG1"></script>
+
+</head>
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <a href="index.html"><img src="img/HZUlogo.png"></a>
+        </div>
+      </div>
+
+      <div class="navbar">
+        <a href="index.html"><img class="button_home" src="img/home.png"> <span> 首页</span></a>
+        <a href="HZUScenery.html"><img class="button_page" src="img/camera.png"> <span> 惠院风光</span></a>
+<!--        <a href="#"><img class="button_friends" src="img/github.png"> <span> 小组介绍</span></a>-->
+        <a href="messageBoard.html" ><img class="button_ico" src="img/message-square.png"><span> 留言板</span></a>
+      </div>
+
+      <div class="row">
+        <div class="side">
+            <h1 >学校简介</h1>
+            <p>惠州学院（Huizhou University）是广东省属全日制公办本科高校、普通本科转型试点高校、省市共建本科高校和省硕士学位授予立项建设单位、第二批省级双创示范基地和省创建国家教师教育创新实验区立项院校，位于全国文明城市惠州。</p>
+<!--            <p>惠州学院创办于1946年，学校前身粤秀中学迁至惠阳丰湖书院，后改办为“广东省立惠州师范学校”。1978年12月，经国务院批准升格为专科院校，更名为“惠阳师范专科学校”。1993年9月，经广东省人民政府批准，在惠阳师范专科学校、惠州教育学院、西北纺织学院惠州分院联合办学基础上，成立专科层次的“惠州大学”。2000年3月，经教育部批准升格为本科院校，更名为"惠州学院"。</p>-->
+            <p>截至2020年9月，学院有全日制在校生1.9万人；学校有17个二级学院，开设57个本科专业；有专任教师1039名；学校占地总面积2500亩。</p>
+
+<!--            <h1>敦重明辨 求真致用</h1>-->
+<!--            <p>惠州学院地处全国文明城市、国家历史文化名城、粤港澳大湾区重要节点城市——惠州，是省属全日制公办本科高校、普通本科转型试点高校、省市共建本科高校和省硕士学位授予立项建设单位、省第二批双创示范基地、省创建国家教师教育创新实验区立项院校、省第三批高校中华优秀传统文化传承基地、省高校“三全育人”体制机制建设试点单位。</p>-->
+<!--            <h3>More</h3>-->
+<!--            <h2>学校沿革</h2>-->
+<!--            <p>沿革</p>-->
+<!--            <p>沿革</p>-->
+<!--            <p>沿革</p>-->
+            <h2>学校位置</h2>
+            <!--百度地图容器-->
+            <div style="width:280px;height:290px;border:#ccc solid 1px;" id="dituContent"></div>
+            <script type="text/javascript">
+
+                //创建和初始化地图函数：
+                function initMap(){
+                    createMap();//创建地图
+                    setMapEvent();//设置地图事件
+                    // addMapControl();//向地图添加控件
+                }
+
+                //创建地图函数：
+                function createMap(){
+                    var map = new BMapGL.Map("dituContent");//在百度地图容器中创建一个地图
+                    var point = new BMapGL.Point(114.426327,23.04476);//定义一个中心点坐标
+                    map.centerAndZoom(point,16);//设定地图的中心点和坐标并将地图显示在地图容器中
+                    window.map = map;//将map变量存储在全局
+                }
+
+                //地图事件设置函数：
+                function setMapEvent(){
+                    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+                    // map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+                    map.enableScrollWheelZoom(true);
+                    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+                    map.enableKeyboard();//启用键盘上下左右键移动地图
+                }
+
+                //地图控件添加函数：
+                // function addMapControl(){
+                //     //向地图中添加缩放控件
+                //     var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_SMALL});
+                //     map.addControl(ctrl_nav);
+                //     //向地图中添加比例尺控件
+                //     var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+                //     map.addControl(ctrl_sca);
+                // }
+                initMap();//创建和初始化地图
+            </script>
+<!--            <p>更多内容</p>-->
+<!--            <div class="fakeimg" style="height:60px;">****</div><br>-->
+<!--            <div class="fakeimg" style="height:60px;">***</div><br>-->
+
+        </div>
+        <div class="main">
+            <h2 style="text-align: center">美丽惠院</h2>
+            <div class="showSchoolItemContainer">
+                <div class="showSchoolItem">
+                    <img src="img/school2.jpg">
+                </div>
+                <h2 style="text-align: center">校园地图</h2>
+                <div class="showSchoolItem">
+                    <img src="img/hzuMapBig.jpg">
+                </div>
+            </div>
+
+
+
+        </div>
+      </div>
+
+      <div class="footer">
+          <div class="copyright">
+              Copyright © 2021-2022
+              <strong><a href="//www.zerotwo.red/" target="_blank">zerotwo.red</a></strong> All Rights Reserved. 备案号：<a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn/">粤ICP备2021155110号</a>
+          </div>
+
+      </div>
+</body>
+</html>

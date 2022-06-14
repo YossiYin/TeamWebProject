@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TeamWebProject exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/TeamWebProject_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TeamWebProject/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TeamWebProject" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="JUnit5.8.1" module-name="TeamWebProject" />
+          <element id="library" level="project" name="gson-2.9.0" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

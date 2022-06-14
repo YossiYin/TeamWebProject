@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>惠大美景</title>
+    <link rel="shortcut icon" href="img/github-red.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-logo">
+            <a href="index.html"><img src="img/HZUlogo.png"></a>
+        </div>
+
+      </div>
+
+    <div class="navbar">
+        <a href="index.html"><img class="button_home" src="img/home.png"> <span>首页</span></a>
+        <a href="HZUScenery.html"><img class="button_page" src="img/camera.png"> <span>惠院风光</span></a>
+<!--        <a href="#"><img class="button_friends" src="img/github.png"> <span>小组介绍</span></a>-->
+        <a href="messageBoard.html" ><img class="button_ico" src="img/message-square.png"><span>留言板</span></a>
+    </div>
+
+      <div class="sceneryRow">
+          <div class="windowShades"> <!--各项大类图片-->
+              <div class="windowShadesContainer">
+                  <!-- https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80 -->
+                  <div id="imgOne" class="panel active" style="background-image:url('img/SceneryTestImg/imgOne/coverShow.jpg')">
+                      <h3>旭日教学大楼</h3>
+                  </div>
+                  <!-- https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80 -->
+                  <div id="imgTwo" class="panel" style="background-image:url('img/SceneryTestImg/imgTwo/coverShow.jpg')">
+                      <h3>电子楼</h3>
+                  </div>
+                  <div id="imgThree" class="panel" style="background-image:url('img/SceneryTestImg/imgThree/coverShow.jpg')">
+                      <h3>特色建筑</h3>
+                  </div>
+                  <!-- https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80 -->
+                  <!-- <div class="panel" style="background-image:url('./images/WechatIMG431.jpeg')">
+                      <h3>冬天的都市</h3>
+                  </div> -->
+                  <div id="imgFour" class="panel" style="background-image:url('img/SceneryTestImg/imgFour/coverShow.jpg')">
+                      <h3>敦重明辨</h3>
+                  </div>
+
+              </div>
+
+          </div>
+
+          <script src="js/script.js"></script>
+          <script src="js/jquery-3.6.0.js"></script>
+          <script>
+              /*实现百叶窗变化+AJAX*/
+              $(function () {
+                  $(".panel").click(function () {
+                      $(".panel").removeClass("active");
+                      $(this).addClass("active");
+                      /*完成百叶窗变化*/
+                      /*使用AJAX显示详细信息*/
+                      var id = $(this).attr("id");
+                      // alert("当前点击图片的id为："+id);
+                      $.ajax({
+                          url:"imgDetailServlet",
+                          data:{choseId:$(this).attr("id")},  /*得到点击图片的ID并传送给服务器*/
+                          type:"GET",
+                          success:function (serveData) {
+                               // alert("imgPath="+serveData.imgPath+" detailTitle="+serveData.detailTitle+" detailText="+serveData.detailText);
+                              //设置传送过来的数据
+                              $(".detailText h1").html(serveData.detailTitle);
+                              $(".detailText p").html(serveData.detailText);
+                              // alert("从服务器得到的文本信息为："+serveData.detailText);
+                              $(".detailImg img").attr("src",serveData.imgPath);
+                              // alert("设置图片路径为："+serveData.imgPath);
+                              //动画
+                              $(".detailText").addClass("active");
+                          },
+                          dataType:"json"
+                          });
+                  })
+                  /*第一次载入就进行请求*/
+                  $.ajax({
+                      url:"imgDetailServlet",
+                      data:{choseId:"imgOne"},  /*得到点击图片的ID并传送给服务器*/
+                      type:"GET",
+                      success:function (serveData) {
+                          // alert("imgPath="+serveData.imgPath+" detailTitle="+serveData.detailTitle+" detailText="+serveData.detailText);
+                          //设置传送过来的数据
+                          $(".detailText h1").html(serveData.detailTitle);
+                          $(".detailText p").html(serveData.detailText);
+                          // alert("从服务器得到的文本信息为："+serveData.detailText);
+                          $(".detailImg img").attr("src",serveData.imgPath);
+                          // alert("设置图片路径为："+serveData.imgPath);
+                          //动画
+                          $(".detailText").addClass("active");
+                      },
+                      dataType:"json"
+                  });
+              })
+          </script>
+
+          <div class="imgDetailOuter">
+
+              <div class="detailImg">
+                  <img src="img/SceneryTestImg/imgOne/1.jpg">
+                  <!--实现图片手动轮播-->
+                  <script>
+                      $(function () {
+                          $(".button").click(function () {
+                              // alert($(this).attr("src"));
+                              //思路：得到图片路径，轮换图片路径
+                              var imgDom = $(".detailImg img");
+                              var str = imgDom.attr("src");
+                              // alert("得到的图片路径="+str);
+                              var matchNum = str.match(/\d+/g);
+                              if (matchNum<=1){
+                                  matchNum++;
+                              }else if (matchNum>=2){  /*此处设置图片数*/
+                                  matchNum--;
+                              }
+                              // alert(matchNum);
+                              var result  = str.replace(/\d+/g,matchNum);
+                              // alert("result="+result);
+                              imgDom.attr("src",result);
+                          })
+                      })
+                  </script>
+              </div>
+<!--              <img class="refreshButton" src="img/SceneryTestImg/refresh-cw.png">-->
+              <button class="button" style="vertical-align:middle"><span>切换图片<img src="img/SceneryTestImg/refresh-cw.png"></span></button>
+
+              <div class="detailText">
+                  <h1>旭日教学大楼</h1>
+                  <p></p>
+<!--                  <p>旭日大楼正门前坐拥全校最大的广场——旭日广场，平时晚上会有部分协会在广场上举行日常活动。在双子楼未建成前，旭日大楼是许多学院的主要上课地点，大楼前后左右各有一个出入口，正门位于旭日广场。</p>-->
+
+              </div>
+
+          </div>
+
+      </div>
+
+
+      <div class="footer">
+          <div class="copyright">
+              Copyright © 2021-2022
+              <strong><a href="//www.zerotwo.red/" target="_blank">zerotwo.red</a></strong> All Rights Reserved. 备案号：<a target="_blank" rel="nofollow" href="https://beian.miit.gov.cn/">粤ICP备2021155110号</a>
+          </div>
+      </div>
+</body>
+</html>
