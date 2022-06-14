@@ -44,11 +44,16 @@ public class GuestMessageServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         // 解决响应中文乱码
         resp.setContentType("text/html; charset=UTF-8");
-
         PrintWriter writer = resp.getWriter();
 
         //为了防止刷新页面导致页面信息丢失
         if ("load".equals(req.getParameter("method"))){
+//                /*设置现有留言个数*/
+//            System.out.println("method为"+req.getParameter("method"));
+//            System.out.println("messageNum为"+req.getParameter("messageNum"));
+//            Integer messageNum = new Integer(req.getParameter("messageNum"));
+//            System.out.println("载入页面,得到的messageNum为"+messageNum);
+//            GuestMessage.setMessageNum(messageNum);
             if (guestMessageArrayList!=null){
                 //List转json字符串
                 String s = gson.toJson(guestMessageArrayList);

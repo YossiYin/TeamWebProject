@@ -74,6 +74,21 @@
                       </div>
                   </div>
 
+                  <div class="box">
+                      <div class="left">
+                          Simplicity is prerequisite for reliability.
+                          <span class="sendTime">---2022年06月14日 14:21:56</span>
+                      </div>
+                      <div class="center">
+                <span class="guestName">
+                    Edsger-Dijkstra
+                </span>
+                      </div>
+                      <div class="right">
+                          <span class="sendTime"></span>
+                      </div>
+                  </div>
+
 
 
 
@@ -195,7 +210,8 @@
                             url: "GuestMessageServlet",
                             type: "post",
                             dataType: "text",
-                            data: {"method":"load"},
+                            // data: {method:"load",messageNum:$(".box").length.toString()},
+                            data: {method:"load"},
                             success: function (result) {
                                 if(result!=null){
                                     // alert("得到服务器的数据为："+result+"类型为"+typeof result);
